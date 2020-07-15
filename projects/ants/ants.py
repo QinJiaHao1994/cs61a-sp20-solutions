@@ -685,7 +685,6 @@ class LaserAnt(ThrowerAnt):
     def insects_in_front(self, beehive):
         # BEGIN Problem OPTIONAL
         result = {}
-
         def helper(place, distance):
             if place is beehive:
                 return
@@ -703,9 +702,7 @@ class LaserAnt(ThrowerAnt):
 
     def calculate_damage(self, distance):
         # BEGIN Problem OPTIONAL
-        # print(self.insects_shot)
         damage = self.damage - distance * 0.2 - self.insects_shot * 0.05
-        # print(damage)
         return max(0, damage)
         # END Problem OPTIONAL
 
@@ -713,7 +710,6 @@ class LaserAnt(ThrowerAnt):
         insects_and_distances = self.insects_in_front(gamestate.beehive)
         for insect, distance in insects_and_distances.items():
             damage = self.calculate_damage(distance)
-            # print(damage)
             insect.reduce_armor(damage)
             if damage:
                 self.insects_shot += 1
